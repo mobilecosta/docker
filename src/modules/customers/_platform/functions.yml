@@ -1,0 +1,10 @@
+# Internal Processing Fuctions
+customerQueueListener:
+  handler: src/modules/customers/functions/customers-sqs.handler
+  description: Listener CustomersQueue send message to Dynamo
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - CustomersQueue
+            - Arn

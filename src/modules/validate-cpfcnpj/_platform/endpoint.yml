@@ -1,0 +1,17 @@
+# Customers API Endpoints
+validateCpfCnpj:
+  handler: src/modules/validate-cpfcnpj/endpoints/create.handler
+  description: Validate a document using first the database and after that the SERPRO information service
+  events:
+    - http:
+        method: post
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: validate/document
+        cors: true
+  

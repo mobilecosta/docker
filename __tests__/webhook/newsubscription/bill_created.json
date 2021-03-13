@@ -1,0 +1,108 @@
+{
+  "event": {
+    "type": "bill_created",
+    "created_at": "2020-06-06T17:27:56.842-03:00",
+    "data": {
+      "bill": {
+        "id": 3230444,
+        "code": null,
+        "amount": "109.9",
+        "installments": 1,
+        "status": "pending",
+        "seen_at": null,
+        "billing_at": null,
+        "due_at": "2020-06-09T23:59:59.000-03:00",
+        "url": "https://sandbox-app.vindi.com.br/customer/bills/3230444?token=f65d49b6-04fd-49ab-9434-95dba9a3f0d5",
+        "created_at": "2020-06-06T17:27:56.000-03:00",
+        "updated_at": "2020-06-06T17:27:56.000-03:00",
+        "bill_items": [
+          {
+            "id": 8902419,
+            "amount": "109.9",
+            "quantity": 1,
+            "pricing_range_id": null,
+            "description": null,
+            "pricing_schema": {
+              "id": 210328,
+              "short_format": "R$ 109,90",
+              "price": "109.9",
+              "minimum_price": null,
+              "schema_type": "flat",
+              "pricing_ranges": [],
+              "created_at": "2020-06-06T17:27:56.000-03:00"
+            },
+            "product": {
+              "id": 53960,
+              "name": "Cobrança Recorrente",
+              "code": null
+            },
+            "product_item": {
+              "id": 339464,
+              "product": {
+                "id": 53960,
+                "name": "Cobrança Recorrente",
+                "code": null
+              }
+            },
+            "discount": null
+          }
+        ],
+        "charges": [
+          {
+            "id": 3172767,
+            "amount": "109.9",
+            "status": "pending",
+            "due_at": "2020-06-09T23:59:59.000-03:00",
+            "paid_at": null,
+            "installments": 1,
+            "attempt_count": 0,
+            "next_attempt": null,
+            "print_url": null,
+            "created_at": "2020-06-06T17:27:56.000-03:00",
+            "updated_at": "2020-06-06T17:27:56.000-03:00",
+            "last_transaction": null,
+            "payment_method": {
+              "id": 2385,
+              "public_name": "Cartão de crédito",
+              "name": "Cartão de crédito",
+              "code": "credit_card",
+              "type": "PaymentMethod::CreditCard"
+            }
+          }
+        ],
+        "customer": {
+          "id": 308832,
+          "name": "José Silva",
+          "email": "jose@ze.com",
+          "code": "29c00611476186f1af090f253f234153785fb3ece15541994c25e6248f4987d1"
+        },
+        "period": {
+          "id": 3245831,
+          "billing_at": "2020-06-06T00:00:00.000-03:00",
+          "cycle": 1,
+          "start_at": "2020-06-06T00:00:00.000-03:00",
+          "end_at": "2020-07-05T23:59:59.000-03:00",
+          "duration": 2591999
+        },
+        "subscription": {
+          "id": 211733,
+          "code": null,
+          "plan": {
+            "id": 16967,
+            "name": "Plano Mensal",
+            "code": "TOTVSMENSAL"
+          },
+          "customer": {
+            "id": 308832,
+            "name": "José Silva",
+            "email": "jose@ze.com",
+            "code": "29c00611476186f1af090f253f234153785fb3ece15541994c25e6248f4987d1"
+          }
+        },
+        "metadata": {},
+        "payment_profile": null,
+        "payment_condition": null
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+# # Microservices API Endpoints
+# confirmEmail:
+#   handler: src/modules/microservices/endpoints/confirm-mail.handler
+#   description: Customer confirm your mail
+#   events:
+#     - http:
+#         method: get
+#         path: services/validate/{customerId}/mailstatus/{token}
+#         cors: true
+#         request:
+#           parameters:
+#             paths:
+#               customerId: true
+#               token: true
+
+# verifyMailStatus:
+#   handler: src/modules/microservices/endpoints/microservices.mailConfirmStatus
+#   description: Verify if user confirmed your mail
+#   events:
+#     - http:
+#         method: get
+#         path: services/verify/{customerId}/{token}
+#         cors: true
+#         request:
+#           parameters:
+#             paths:
+#               customerId: true
+#               token: true
+
+requestPINSMS:
+  handler: src/modules/microservices/endpoints/create-pin.handler
+  description: Send SMS PIN Request
+  events:
+    - http:
+        method: post
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: services/request-pin/{customerId}
+        request:
+          parameters:
+            paths:
+              customerId: true
+        cors: true
+
+checkPINSMS:
+  handler: src/modules/microservices/endpoints/confirm-pin.handler
+  description: Verify PIN
+  events:
+    - http:
+        method: get
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: services/confirm-pin/{customerId}/{token}
+        request:
+          parameters:
+            paths:
+              customerId: true
+              token: true
+        cors: true

@@ -1,0 +1,225 @@
+openapi: 3.0.1
+info:
+  title: MPN Services
+  description: MPN Project - Backoffice operations
+  contact:
+    email: tp.adalton.goncalves@totvs.com.br
+  version: 0.0.1
+servers:
+- url: https://nrkc3ai21b.execute-api.us-east-1.amazonaws.com/dev
+tags:
+- name: customers
+  description: Customers Transactions
+- name: services
+  description: MPN microservices
+paths:
+  /customers:
+    post:
+      tags:
+      - customers
+      summary: Create new Customer
+      operationId: post customer
+      requestBody:
+        description: customer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        201:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customerId:
+                    type: string
+                  transaction:
+                    type: string
+        400:
+          description: Request Body Not Found
+    
+  /services/pinrequest:
+    post:
+      tags:
+      - services
+      summary: Send PIN to Customer
+      operationId: request pin to customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                phone:
+                  type: string
+                  description: Format - 5511987654444 (country - statecode - number)
+      responses:
+        201:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  statusDescription:
+                    type: string
+        400:
+          description: Error in request
+                
+  /services/checkpin:
+    post:
+      tags:
+      - services
+      summary: Check PIN
+      operationId: Check if pin is ok
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                pin:
+                  type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  statusDescription:
+                    type: string
+        400:
+          description: Error in request
+  
+  /services/mailstatus:
+    get:
+      tags:
+      - services
+      summary: Check if customer confirmed the email
+      parameters:
+        - in: query
+          name: customerId
+          schema:
+            type: string
+          required: true
+          description: Customer ID
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customerId:
+                    type: string
+                  status:
+                    type: string
+                  statusDescription:
+                    type: string
+        422:
+          description: Missing Parameters
+        400:
+          description: Invalid Parameters
+          
+        
+
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        name:
+          type: string
+        trade:
+          type: string
+        email:
+          type: string
+        legalEntity:
+          type: string
+          enum:
+            - Yes
+            - No
+        registryCode:
+          type: string
+        registryStateCode:
+          type: string
+        cnae:
+          type: string
+        notes:
+          type: string
+        contactPerson:
+          type: string
+        website:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          $ref: '#/components/schemas/Phones'
+      required:
+        - name
+        - email
+        - legalEntity
+        - registryCode
+        - registryStateCode
+        - address
+          
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+        number:
+           type: string
+        additionalDetails:
+          type: string
+        zipcode:
+          type: string
+        neighborhood:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+      required:
+        - street
+        - number
+        - zipcode
+        - city
+        - state
+    
+    Phones:
+      type: array
+      items:
+        type: object
+        properties:
+          phoneType:
+            type: string
+            enum:
+              - mobile
+              - landline
+          number:
+            type: string
+          extension:
+            type: string
+        required:
+          - phoneType
+          - number
+ 
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string

@@ -1,0 +1,126 @@
+# Internal Processing Fuctions
+# vindiWebhookQueueListener:
+#   handler: src/modules/vindi-webhook/functions/webhook-receive-sqs.handler
+#   description: Listener WebhookVindiQueue and share message to others systems
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - ReceiveVindiWebhookQueue
+#             - Arn
+
+# WHListenerSubscriptionCanceled:
+#   handler: src/modules/vindi-webhook/functions/wh-subscription-canceled-sqs.handler
+#   description: Processing Message Subscription Canceled
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - WHSubscriptionCanceledQueue
+#             - Arn
+
+# WHListenerBillCreated:
+#   handler: src/modules/vindi-webhook/functions/wh-bill-created-sqs.handler
+#   description: Processing Message Bill Created
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - WHBillCreatedQueue
+#             - Arn
+
+# WHListenerBillCanceled:
+#   handler: src/modules/vindi-webhook/functions/wh-bill-canceled-sqs.handler
+#   description: Processing Message Bill Canceled
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - WHBillCanceledQueue
+#             - Arn
+
+# WHListenerBillPaid:
+#   handler: src/modules/vindi-webhook/functions/wh-bill-paid-sqs.handler
+#   description: Processing Message Bill Paid
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - WHBillPaidQueue
+#             - Arn
+
+# WHListenerChargeRejected:
+#   handler: src/modules/vindi-webhook/functions/wh-charge-rejected-sqs.handler
+#   description: Processing Message Charge Rejected
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - WHChargeRejectedQueue
+#             - Arn
+
+# WHListenerPaymentProfileCreated:
+#   handler: src/modules/vindi-webhook/functions/wh-payment-profile-created-sqs.handler
+#   description: Processing Message Payment Profile Created
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - WHPaymentProfileCreatedQueue
+#             - Arn
+
+# WHListenerChargeCreated:
+#   handler: src/modules/vindi-webhook/functions/wh-charge-created-sqs.handler
+#   description: Processing Message Charge Created
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - WHChargeCreatedQueue
+#             - Arn
+
+# WHSubscriptionCreated:
+#   handler: src/modules/vindi-webhook/functions/wh-subscription-created-sqs.handler
+#   description: Processing Message Subscription Created
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - WHSubscriptionCreatedQueue
+#             - Arn
+
+subscriptionCanceledWorker:
+  handler: src/modules/vindi-webhook/functions/subscription-canceled-worker.handler
+  description: Processing Message Subscription Canceled
+
+subscriptionCreatedWorker:
+  handler: src/modules/vindi-webhook/functions/subscription-created-worker.handler
+  description: Processing Message Subscription Created
+
+chargeCreatedWorker:
+  handler: src/modules/vindi-webhook/functions/charge-created-worker.handler
+  description: Processing Message Charge Created
+
+chargeRejectedWorker:
+  handler: src/modules/vindi-webhook/functions/charge-rejected-worker.handler
+  description: Processing Message Charge Rejected
+
+paymentProfileWorker:
+  handler: src/modules/vindi-webhook/functions/payment-profile-created-worker.handler
+  description: Processing Message Payment Profile Created
+
+billCanceledWorker:
+  handler: src/modules/vindi-webhook/functions/bill-canceled-worker.handler
+  description: Processing Message Bill Canceled
+
+billPaidWorker:
+  handler: src/modules/vindi-webhook/functions/bill-paid-worker.handler
+  description: Processing Message Bill Paid
+
+billCreatedWorker:
+  handler: src/modules/vindi-webhook/functions/bill-created-worker.handler
+  description: Processing Message Bill Created
+
+subscriptionReactivatedWorker:
+  handler: src/modules/vindi-webhook/functions/subscription-reactivated-worker.handler
+  description: Processing Message Subscription Reactivated

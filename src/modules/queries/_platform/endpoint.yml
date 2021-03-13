@@ -1,0 +1,14 @@
+graphql:
+  handler: src/graphql/handler.query
+  events:
+    - http:
+        path: graphql
+        method: post
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write   

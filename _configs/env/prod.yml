@@ -1,0 +1,60 @@
+ENV: ${self:provider.stage}
+APPNAME: ${self:service}
+
+CUSTOMERS_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.customers-sqs}'
+# VINDI_WEBHOOK_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.vindi-webhook-sqs}'
+PAYLOAD_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.payload-log-sqs}'
+
+SUBSCRIPTIONS_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.subscriptions-sqs}'
+CANCEL_SUBSCRIPTION_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.cancel-subscription-sqs}'
+WH_SUBSCRIPTION_CANCELED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-subscription-canceled-sqs}'
+WH_CHARGE_CREATED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-charge-created-sqs}'
+
+WH_CHARGE_REJECTED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-charge-rejected-sqs}'
+WH_BILL_CREATED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-bill-created-sqs}'
+WH_BILL_CANCELED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-bill-canceled-sqs}'
+WH_BILL_PAID_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-bill-paid-sqs}'
+WH_PAYMENT_PROFILE_CREATED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-payment-profile-created-sqs}'
+WH_SUBSCRIPTION_CREATED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-subscription-created-sqs}'
+
+EVENTS_EMPODERA_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.events-empodera-sqs}'
+# EVENTS_LICENCIADOR_ERROR_HANDLING: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.licenciador_error_handling}'
+EVENTS_LICENCIADOR_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.events-licenciador-sqs}'
+EVENTS_PROTHEUS_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.events-protheus-sqs}'
+EVENTS_STORE_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.events-store-sqs}'
+EVENTS_VINDI_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.events-vindi-sqs}'
+EVENTS_MESSAGE_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.events-message-sqs}'
+VERIFY_EVENTS_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.verify-events-sqs}'
+
+MESSAGE_GATEWAY_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.message-gateway-sqs}'
+
+CHAT_NOTIFY: 'https://chat.googleapis.com/v1/spaces/AAAAlWv5I-U/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=5dzt35O3AQGFEBrm-U14OAZsux8F7gWk9Q6yn481bq4%3D'
+
+PRODUCTID_VINDI: '631519'
+PRODUCTID_RECOMPRA: '631519'
+
+LICENCIADOR_BASE_URL: 'https://api-backoffice.meueleve.com.br'
+PROTHEUS_URL: 'https://apimprod.totvs.com.br/api'
+EMPODERA_BASE_URL: 'https://empodera.totvs.com/api/area/eleve'
+VINDI_URL: 'https://app.vindi.com.br/api/v1'
+STORE_URL: 'https://tflow.store.totvs.com/api'
+SERPRO_URL: 'https://gateway.apiserpro.serpro.gov.br'
+ZENVIA_URL: 'https://api-rest.zenvia.com/services'
+# PROTHEUS_CORP_URL: ''
+
+EMPODERA_KEY: ${ssm:${self:provider.stage}-empodera_key}
+EMPODERA_TOKEN: ${ssm:${self:provider.stage}-empodera_token}
+STORE_KEY: ${ssm:${self:provider.stage}-store_key}
+STORE_TOKEN: ${ssm:${self:provider.stage}-store_token}
+SERPRO_KEY: ${ssm:${self:provider.stage}-serpro_key}
+SERPRO_SECRET: ${ssm:${self:provider.stage}-serpro_secret}
+VINDI_TOKEN: ${ssm:${self:provider.stage}-vindi_token}
+ZENVIA_KEY: ${ssm:${self:provider.stage}-zenvia_key}
+ZENVIA_TOKEN: ${ssm:${self:provider.stage}-zenvia_token}
+PROTHEUS_KEY: ${ssm:${self:provider.stage}-protheus_key}
+PROTHEUS_TOKEN: ${ssm:${self:provider.stage}-protheus_token}
+LICENCIADOR_USER: ${ssm:${self:provider.stage}-licenciador_user}
+LICENCIADOR_PASS: ${ssm:${self:provider.stage}-licenciador_pass}
+
+
+

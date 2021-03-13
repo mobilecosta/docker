@@ -1,0 +1,211 @@
+service: mpn
+
+frameworkVersion: '>=1.0.0 <2.0.0'
+
+package:
+  individually: true
+  exclude:
+    - node_modules/**
+    - .git/**
+    - .serverless/**
+    - yarn.lock
+    - package-lock.json
+  excludeDevDependencies: true
+
+plugins:
+  - serverless-plugin-typescript
+  # - serverless-plugin-optimize
+  - serverless-plugin-reducer
+  - serverless-offline-sqs-esmq
+  - serverless-dynamodb-local
+  # - serverless-plugin-split-stacks
+  # - serverless-offline-sns
+  - serverless-offline-ssm
+  # - serverless-s3-local
+  # - serverless-offline-scheduler
+  # - serverless-offline-lambda
+  - serverless-offline
+
+provider:
+  name: aws
+  region: ${opt:region, 'us-west-2'}
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'local'}
+  versionFunctions: false # No functions versioning
+  timeout: 90
+  maximumRetryAttempts: 2
+  # vpc:
+  #   securityGroupIds:
+  #     - ${ssm:${self:provider.stage}-lambda-sg}
+  #   subnetIds:
+  #     - ${ssm:${self:provider.stage}-subnet-04cc3f91fee7ee803}
+  #     - ${ssm:${self:provider.stage}-subnet-0e7bed987773178c1}
+
+  environment: #Global Environment variables
+      ${file(./_configs/env/${self:provider.stage}.yml)}
+  iamRoleStatements:
+  - Effect: Allow
+    Action:
+      # - lambda:"*"
+      - dynamodb:"*"
+      - sqs:"*"
+      - ses:"*"
+    Resource: "arn:aws:*:*:*:*"
+
+  # iamRoleStatements:
+  - Effect: Allow
+    Action: # Gives permission to Lambda execution
+      - lambda:InvokeFunction
+      - lambda:InvokeAsync
+    Resource: "*"
+  
+  - Effect: Allow
+    Action: # Gives permission to Logs
+      - logs:CreateLogGroup
+      - logs:CreateLogStream
+      - logs:PutLogEvents
+    Resource: arn:aws:logs:*:*:*
+
+  - Effect: Allow
+    Action: # Gives permission to SNS
+      - sns:Publish
+    Resource: arn:aws:sns:*:*:*
+
+  - Effect: Allow
+    Action: # Gives permission to SQS
+      - sqs:DeleteMessage
+      - sqs:ReceiveMessage
+      - sqs:SendMessage
+      - sqs:GetQueueAttributes
+      - sqs:SetQueueAttributes
+    Resource: arn:aws:sqs:*:*:*
+  
+  - Effect: Allow
+    Action: # Gives permission to DynamoDB tables in a specific region
+      - dynamodb:DescribeTable
+      - dynamodb:Query
+      - dynamodb:Scan
+      - dynamodb:GetItem
+      - dynamodb:PutItem
+      - dynamodb:UpdateItem
+      - dynamodb:DeleteItem
+      - dynamodb:GetRecords
+      - dynamodb:GetShardIterator
+      - dynamodb:DescribeStream
+      - dynamodb:ListStreams
+    Resource: arn:aws:dynamodb:*:*:*
+
+  - Effect: Allow
+    Action: # Gives permission to S3 buckets in a specific region
+      - s3:*
+    Resource: arn:aws:s3:*:*:*
+    
+custom:
+  prefix: ${self:provider.stage}-${self:service}
+  accountId: '123456789012'
+  #SQS
+  customers-sqs: ${self:custom.prefix}-customers_sqs
+  payload-log-sqs: ${self:custom.prefix}-payload_sqs
+  # vindi-webhook-sqs: ${self:custom.prefix}-vindi_webhook_sqs
+  subscriptions-sqs: ${self:custom.prefix}-subscriptions_sqs
+  cancel-subscription-sqs: ${self:custom.prefix}-cancel_subscription_sqs
+  wh-subscription-canceled-sqs: ${self:custom.prefix}-wh_subscription_canceled_sqs
+  wh-charge-created-sqs: ${self:custom.prefix}-wh_charge_created_sqs
+  wh-charge-rejected-sqs: ${self:custom.prefix}-wh_charge_rejected_sqs
+  wh-bill-created-sqs: ${self:custom.prefix}-wh_bill_created_sqs
+  wh-bill-canceled-sqs: ${self:custom.prefix}-wh_bill_canceled_sqs
+  wh-bill-paid-sqs: ${self:custom.prefix}-wh_bill_paid_sqs
+  wh-payment-profile-created-sqs: ${self:custom.prefix}-wh_payment_profile_created_sqs
+  wh-subscription-created-sqs: ${self:custom.prefix}-wh_subscription_created_sqs
+  events-empodera-sqs: ${self:custom.prefix}-events_empodera_sqs
+  # licenciador_error_handling: ${self:custom.prefix}-licenciador_error_handling
+  events-licenciador-sqs: ${self:custom.prefix}-events_licenciador_sqs
+  events-protheus-sqs: ${self:custom.prefix}-events_protheus_sqs
+  events-store-sqs: ${self:custom.prefix}-events_store_sqs
+  events-vindi-sqs: ${self:custom.prefix}-events_vindi_sqs
+  events-message-sqs: ${self:custom.prefix}-events_message_sqs
+  verify-events-sqs: ${self:custom.prefix}-verify_events_sqs
+  events-protheus-corp-sqs: ${self:custom.prefix}-events_protheus_corp_sqs
+  message-gateway-sqs: ${self:custom.prefix}-message_gateway_sqs
+
+  serverless-offline:
+    host: 'localhost'
+    region: ${self:provider.region}
+
+  serverless-offline-sqs-esmq:
+    apiVersion: '2012-11-05'
+    endpoint: http://localhost:9324
+    region: ${self:provider.region}
+    accessKeyId: root
+    secretAccessKey: root
+
+  dynamodb:
+    stages:
+      - local
+    start:
+      image: dynamo
+      port: "8000" # the port of our Dynamo docker container
+      noStart: true
+      migrate: true
+      region: ${self:provider.region}
+  
+  splitStacks:
+    nestedStackCount: 20 # Controls the number of created nested stacks
+    perFunction: false
+    perType: true
+    perGroupFunction: false
+    stackConcurrency: 5 # Controls if enabled and how much stacks are deployed in parallel. Disabled if absent.
+    resourceConcurrency: 10 # Controls how much resources are deployed in parallel. Disabled if absent.
+  
+  serverless-offline-ssm:
+    stages:
+      - local
+    ssm:
+      local-empodera_key: qZIWsNggE3
+      local-empodera_token: Q2VucDBlRXlGQmc1QWQwS0FCUDVyQU1td3Q2R0VEVldvOTVaZl92Z1dUZzRIQkRL
+      local-store_key: mpn
+      local-store_token: Totvs@123
+      local-serpro_cnpj_token: 4e1a1858bdd584fdc077fb7d80f39283
+      local-serpro_cpf_token: 4e1a1858bdd584fdc077fb7d80f39283
+      local-vindi_token: TMSRiBBNf8n8qIYUlX0Nb7-snM2IuSqb-V73wEnzchc
+      local-zenvia_key: totvs.digital
+      local-zenvia_token: bxMX7ASM
+      local-protheus_key: wYGovdDn1l22TNXWmH1mnaUIK2Aa
+      local-protheus_token: imMPlgmETrILviO2kfp02R1rPcYa
+      # local-protheus_key: Cn3eKaSiclN1euqrb90iA6fEKesa
+      # local-protheus_token: mKnzP81Zeu4OixdcuPcWcYpUqxsa
+      local-licenciador_user: tp.adalton.goncalves@totvs.com.br
+      local-licenciador_pass: totvs@123
+      # EMPODERA_KEY: LUspB5lh3U
+      # EMPODERA_TOKEN: aXZ4T1lrR2FLdWpIcG1LVm9aLTBFbndUc05NZXBhTHhSdW5aZjYxWWFXdUVIVVVY
+      # STORE_KEY: mpn
+      # STORE_TOKEN: Totvs@123
+      # SERPRO_CNPJ_TOKEN: 4e1a1858bdd584fdc077fb7d80f39283
+      # SERPRO_CPF_TOKEN: 4e1a1858bdd584fdc077fb7d80f39283
+      # VINDI_TOKEN: TMSRiBBNf8n8qIYUlX0Nb7-snM2IuSqb-V73wEnzchc
+      # ZENVIA_KEY: totvs.digital
+      # ZENVIA_TOKEN: bxMX7ASM 
+      # PROTHEUS_TOKEN: b5acd3e3-3070-37dd-a6e1-f776f3b5eb0f
+      #NEW-FOR NEXT DEPLOY (Remove LICENCIADOR_TOKEN)
+      # LICENCIADOR_USER: tp.adalton.goncalves@totvs.com.br
+      # LICENCIADOR_PASS: totvs@123
+
+  # serverless-offline-sns:
+  #   port: 4002 # a free port for the sns server to run on
+  #   debug: true
+  # customersVindi: ${self:custom.prefix}-sns_customer_vindi
+  # customersVindiArn:
+  #   local:
+  #     "arn:aws:sns:${self:provider.region}:123456789012:${self:custom.customersVindi}"
+
+functions: ${file(_configs/serverless-dynamic.js)}
+
+resources:
+  # Policies
+  # - ${file(_configs/resources/policies.yml)}
+  # DynamoDB
+  - ${file(_configs/resources/dynamodb.yml)}
+  # SQS
+  - ${file(_configs/resources/sqs.yml)}
+
+

@@ -1,0 +1,58 @@
+pipeline {
+    agent {
+        docker {
+            // image 'docker.totvs.io/mpn/mpn_pipeline:latest'
+            // registryUrl 'https://docker.totvs.io'
+            // registryCredentialsId 'totvs_registry'
+            registryCredentialsId 'jefoso'
+            image 'jefoso/mpn_pipeline:0.2'
+            args '--network mpn -p 3000:3000'
+        }
+    }
+    environment {
+        STAGE = getEnvName("${BRANCH_NAME}")
+        
+    }
+    stages {
+        stage('Preparing') {
+            environment {
+                    AWS_ID = credentials("mpn_${STAGE}_keys")
+                    AWS_ACCESS_KEY_ID = "${AWS_ID_USR}"
+                    AWS_SECRET_ACCESS_KEY = "${AWS_ID_PSW}"
+            }
+            steps {
+                sh 'echo ">>> Environment: ${STAGE}"'
+                sh 'npm install'
+                sh "serverless config credentials --stage ${STAGE} --provider aws " +
+                "--key ${AWS_ACCESS_KEY_ID} --secret ${AWS_SECRET_ACCESS_KEY}"
+            }
+        }
+         stage('Build') { 
+             steps {
+                sh './build/check_packages.sh'
+                }
+             }
+         stage('Deploy') {
+             steps {
+                 //notify
+                 sh './build/deploy_packages.sh'
+             }
+         }
+    }
+}
+
+def getEnvName(branch) {
+    if( branch == "production" ) {
+        println branch
+        return "prod";
+    } else if ( branch == "development" ) {
+        println branch
+        return "stg";
+    } else {
+        println branch
+        return "dev";
+    }
+}
+
+
+

@@ -1,0 +1,35 @@
+getBankSlip:
+  handler: src/modules/bankslip/endpoints/read.handler
+  description: Get Customer Document or Id
+  events:
+    - http:
+        method: get
+        path: bankslip
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write
+        cors: true
+        request:
+            parameters:
+                querystrings:
+                  url: true
+
+# testBankSlip:
+#   handler: src/modules/bankslip/functions/cnab-s3.webhook
+#   description: Get Customer Document or Id
+#   events:
+#     - http:
+#         method: get
+#         path: test
+#         authorizer:
+#           type: COGNITO_USER_POOLS
+#           authorizerId:
+#             Ref: ApiGatewayAuthorizer
+#           scopes:
+#             - ${self:custom.prefix}-servicos/read
+#             - ${self:custom.prefix}-servicos/write
+#         cors: true

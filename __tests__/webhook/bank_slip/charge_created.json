@@ -1,0 +1,59 @@
+{
+  "event": {
+    "type": "charge_created",
+    "created_at": "2020-06-11T08:47:55.195-03:00",
+    "data": {
+      "charge": {
+        "id": 3181829,
+        "amount": "80.0",
+        "status": "processing",
+        "due_at": "2020-06-15T23:59:59.000-03:00",
+        "paid_at": null,
+        "installments": 1,
+        "attempt_count": 0,
+        "next_attempt": null,
+        "print_url": "https://sandbox-app.vindi.com.br/customer/charges/3181829?b=3239860&m=4455&t=d85f59fd-43b5-49e5-be75-22ebc2af84fa",
+        "created_at": "2020-06-11T08:47:55.000-03:00",
+        "updated_at": "2020-06-11T08:47:55.000-03:00",
+        "last_transaction": {
+          "id": 2122787,
+          "transaction_type": "charge",
+          "status": "processing",
+          "amount": "80.0",
+          "installments": null,
+          "gateway_message": null,
+          "gateway_response_code": null,
+          "gateway_authorization": "",
+          "gateway_transaction_id": "2",
+          "gateway_response_fields": {
+            "barcode": "34192828700000080001090000000231111011118000",
+            "typable_barcode": "34191.09008 00000.231118 10111.180005 2 82870000008000"
+          },
+          "fraud_detector_score": null,
+          "fraud_detector_status": null,
+          "fraud_detector_id": null,
+          "created_at": "2020-06-11T08:47:55.000-03:00",
+          "gateway": null,
+          "payment_profile": null
+        },
+        "payment_method": {
+          "id": 4455,
+          "public_name": "Boleto bancário",
+          "name": "Boleto",
+          "code": "bank_slip",
+          "type": "PaymentMethod::BankSlip"
+        },
+        "bill": {
+          "id": 3239860,
+          "code": null
+        },
+        "customer": {
+          "id": 309650,
+          "name": "José Silva",
+          "email": "jose@ze.com",
+          "code": "29c00611476186f1af090f253f234153785fb3ece15541994c25e6248f4987d1"
+        }
+      }
+    }
+  }
+}

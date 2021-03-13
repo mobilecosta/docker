@@ -1,0 +1,48 @@
+{
+    "name": "Customers Create",
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "id": "ef0e47ae-30b0-4781-bd51-0ccb36964eaf",
+                "exec": [
+                    ""
+                ],
+                "type": "text/javascript"
+            }
+        }
+    ],
+    "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+    },
+    "request": {
+        "method": "POST",
+        "header": [
+            {
+                "key": "Authorization",
+                "type": "text",
+                "value": "eyJraWQiOiJCWGVWV0ZXVmxSYUgwVnZzYU1aQnR4c0tNZkNoSGtcL2hUU1lDY0JBQ3A0RT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxZXRoOW9pOTF0YTRkYWh1dDhpbTNmNXRscSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGV2LW1wbi1zZXJ2aWNvc1wvcmVhZCIsImF1dGhfdGltZSI6MTU5MDcwNzE4MCwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfdjJoeE9ueWNKIiwiZXhwIjoxNTkwNzEwNzgwLCJpYXQiOjE1OTA3MDcxODAsInZlcnNpb24iOjIsImp0aSI6IjZkZmQxYzM3LWJjZGMtNDhjYi1iNTFhLTE3ZTczMmY4YjU1NyIsImNsaWVudF9pZCI6IjFldGg5b2k5MXRhNGRhaHV0OGltM2Y1dGxxIn0.AaBAy1H4CY041_qQW-poe8yhcUcpA1szAlj3bT-qrkUI7zsbgEpGK4pkSnAVPImAwEJBwUBpJzK5y-i-9Dd_YCMuHk6P8hi1K-5-cmOtNon5dxvOVkf3vQM0HeDAUc-T2LanOOmJ1pZ-DcTn9JIig-OzTFIPvGE99nc5j260F4R0ZAtkj3NgH355h310-M7MOSfLdCwF-GZDtidbLRNuA8ZSVjFpqMEFhTlwGxfbxTlqC6rgsxtHGAQtO589-rOdNviZFlfD4841rfWAL--WsMDZJ9zQ-yw522ggZC-vYBItGzqhG_8O1swi-zEvqS8MtbqKJP-9p9xlP4QDN4_A_g",
+                "disabled": true
+            }
+        ],
+        "body": {
+            "mode": "raw",
+            "raw": "{\n    \"name\": \"Samuel Mendonça\",\n    \"trade\": \"Samuel Mendonça\",\n    \"email\": \"samuelmendonca1@email.com\",\n    \"isLegalEntity\": false,\n    \"registryCode\": \"644.658.640-00\",\n    \"registryStateCode\": \"ISENTO\",\n    \"cnae\": \"\",\n    \"notes\": \"\",\n    \"contactPerson\": \"Samuel Mendonça\",\n    \"website\": \"https://mmmmm.com\",\n    \"address\": {\n      \"street\": \"Av. John Boyd Dunlop\",\n      \"number\": \"123\",\n      \"additionalDetails\": \"Sala 1\",\n      \"zipcode\": \"01255020\",\n      \"neighborhood\": \"Nova Campinas\",\n      \"city\": \"SAO PAULO\",\n      \"state\": \"SP\"\n    },\n    \"phones\": [\n      {\n        \"phoneType\": \"mobile\",\n        \"authorizesSMS\": true,\n        \"authorizesWhatsApp\": true,\n        \"phone\": {\n          \"country\": \"55\",\n          \"area\": \"19\",\n          \"number\": \"987654444\",\n          \"extension\": \"\"\n        }\n      }\n    ],\n    \"isOver16\": true,\n    \"over16Metadata\": {\n      \"ip\": \"9.85.36.127\",\n      \"details\": \"Cors Origin Information\"\n    }\n  }\t",
+            "options": {
+                "raw": {
+                    "language": "json"
+                }
+            }
+        },
+        "url": {
+            "raw": "{{API_GATEWAY}}/customers",
+            "host": [
+                "{{API_GATEWAY}}"
+            ],
+            "path": [
+                "customers"
+            ]
+        }
+    },
+    "response": []
+}

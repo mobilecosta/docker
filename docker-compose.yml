@@ -1,0 +1,50 @@
+version: '2.1'
+services:
+  sqs:
+    image: roribio16/alpine-sqs
+    ports:
+      - "9324:9324"
+      - "9325:9325"
+    networks:
+      - developer
+  
+  dynamodb:
+    image: instructure/dynamo-local-admin
+    ports:
+      - "8000:8000"
+    networks: 
+      - developer
+  
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+    networks:
+      - developer
+
+  # localstack:
+  #   image: localstack/localstack
+  #   ports:
+  #     - "4567-4584:4567-4584"
+  #     - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
+  #   environment:
+  #     - SERVICES=${SERVICES- }
+  #     - PORT_WEB_UI=${PORT_WEB_UI- }
+  #   networks:
+  #     - developer
+
+
+  # serverless:
+  #   build: .
+  #   volumes:
+  #     - "./:/app"
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - sqs
+  #     - dynamodb
+  #   networks:
+  #     - developer
+
+networks:
+  developer:

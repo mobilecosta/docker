@@ -1,0 +1,15 @@
+resellerCreate:
+  handler: src/modules/resellers/endpoints/create.handler
+  description: Create Resellers in Serverless Platform
+  events:
+    - http:
+        method: post
+        path: resellers
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write   

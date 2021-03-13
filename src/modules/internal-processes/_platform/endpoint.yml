@@ -1,0 +1,15 @@
+updateBills:
+  handler: src/modules/internal-processes/endpoints/read.handler
+  description: Update Bills Info
+  events:
+    - http:
+        method: get
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: migration/update-bills
+        cors: true

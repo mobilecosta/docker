@@ -1,0 +1,40 @@
+{
+	"name": "SubscriptionsCustomerId",
+	"protocolProfileBehavior": {
+		"disableBodyPruning": true
+	},
+	"request": {
+		"method": "GET",
+		"header": [],
+		"body": {
+			"mode": "raw",
+			"raw": "{\n\t\"customerId\":\"In+HetBgA245D0jjlNtHiiSCM3vmbKDxkRYFyTNVGaM=\"\t\n\t\n}",
+			"options": {
+				"raw": {
+					"language": "json"
+				}
+			}
+		},
+		"url": {
+			"raw": "{{API_GATEWAY}}/subscriptions?customerId=fd9985bb6d42ce05909953a896a18f384956374818ef193226b7aad91d0773bb",
+			"host": [
+				"{{API_GATEWAY}}"
+			],
+			"path": [
+				"subscriptions"
+			],
+			"query": [
+				{
+					"key": "id",
+					"value": "32oZvvnnEdh3FuecrOLz/nmjWPv6oD9ozPyVliJdZFI=",
+					"disabled": true
+				},
+				{
+					"key": "customerId",
+					"value": "fd9985bb6d42ce05909953a896a18f384956374818ef193226b7aad91d0773bb"
+				}
+			]
+		}
+	},
+	"response": []
+}

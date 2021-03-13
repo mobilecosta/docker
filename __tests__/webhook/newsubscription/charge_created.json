@@ -1,0 +1,39 @@
+{
+  "event": {
+    "type": "charge_created",
+    "created_at": "2020-06-06T17:27:56.806-03:00",
+    "data": {
+      "charge": {
+        "id": 3172767,
+        "amount": "109.9",
+        "status": "pending",
+        "due_at": "2020-06-09T23:59:59.000-03:00",
+        "paid_at": null,
+        "installments": 1,
+        "attempt_count": 0,
+        "next_attempt": null,
+        "print_url": null,
+        "created_at": "2020-06-06T17:27:56.000-03:00",
+        "updated_at": "2020-06-06T17:27:56.000-03:00",
+        "last_transaction": null,
+        "payment_method": {
+          "id": 2385,
+          "public_name": "Cartão de crédito",
+          "name": "Cartão de crédito",
+          "code": "credit_card",
+          "type": "PaymentMethod::CreditCard"
+        },
+        "bill": {
+          "id": 3230444,
+          "code": null
+        },
+        "customer": {
+          "id": 308832,
+          "name": "José Silva",
+          "email": "jose@ze.com",
+          "code": "29c00611476186f1af090f253f234153785fb3ece15541994c25e6248f4987d1"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+PayloadListenerQueue:
+  handler: src/modules/payload/functions/receive-payload-sqs.handler
+  description: Listener PayloadQueue and register
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - PayloadLogQueue
+            - Arn

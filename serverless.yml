@@ -1,0 +1,114 @@
+service: mpn
+
+frameworkVersion: '>=1.0.0 <2.0.0'
+
+package:
+  individually: true 
+
+plugins:
+  - serverless-dynamodb-autoscaling
+  - serverless-plugin-typescript
+  # - serverless-plugin-optimize
+  - serverless-plugin-reducer
+  - serverless-plugin-split-stacks
+  # - serverless-prune-plugin
+
+provider:
+  name: aws
+  region: ${opt:region, 'us-east-1'}
+  role: 'arn:aws:iam::781831358555:role/eng-roles/dev-mpn_role'
+  #role: ${ssm:${self:provider.stage}-mpn_iam_role}
+  runtime: nodejs12.x
+  stage: ${opt:stage} 
+  versionFunctions: true   # No functions versioning
+  timeout: 30
+  maximumRetryAttempts: 2
+  tracing:
+    lambda: true
+    apiGateway: true
+  vpc:
+    securityGroupIds:
+      - ${ssm:${self:provider.stage}-lambda-sg}
+    subnetIds:
+      - ${ssm:${self:custom.prefix}-subnet-0}
+      - ${ssm:${self:custom.prefix}-subnet-1}
+
+  environment: #Global Environment variables
+      ${file(./_configs/env/${self:provider.stage}.yml)}
+
+custom:
+  # stg-tableThroughput: 2
+  # prod-tableThroughput: 4
+  prefix: ${self:provider.stage}-${self:service}
+  accountId: '781831358555'
+  cognito_userpool: ${ssm:${self:provider.stage}_mpn_user_pool}
+  # prune:
+  #   automatic: true
+  #   number: 2
+  
+  #SQS
+  customers-sqs: ${self:custom.prefix}-customers_sqs
+  # vindi-webhook-sqs: ${self:custom.prefix}-vindi_webhook_sqs
+  subscriptions-sqs: ${self:custom.prefix}-subscriptions_sqs
+  cancel-subscription-sqs: ${self:custom.prefix}-cancel_subscription_sqs
+  wh-subscription-canceled-sqs: ${self:custom.prefix}-wh_subscription_canceled_sqs
+  wh-charge-created-sqs: ${self:custom.prefix}-wh_charge_created_sqs
+  wh-charge-rejected-sqs: ${self:custom.prefix}-wh_charge_rejected_sqs
+  wh-bill-created-sqs: ${self:custom.prefix}-wh_bill_created_sqs
+  wh-bill-canceled-sqs: ${self:custom.prefix}-wh_bill_canceled_sqs
+  wh-bill-paid-sqs: ${self:custom.prefix}-wh_bill_paid_sqs
+  wh-payment-profile-created-sqs: ${self:custom.prefix}-wh_payment_profile_created_sqs
+  payload-log-sqs: ${self:custom.prefix}-payload_log_sqs
+  wh-subscription-created-sqs: ${self:custom.prefix}-wh_subscription_created_sqs
+  events-empodera-sqs: ${self:custom.prefix}-events_empodera_sqs
+  # licenciador_error_handling: ${self:custom.prefix}-licenciador_error_handling
+  events-licenciador-sqs: ${self:custom.prefix}-events_licenciador_sqs
+  events-protheus-sqs: ${self:custom.prefix}-events_protheus_sqs
+  events-protheus-corp-sqs: ${self:custom.prefix}-events_protheus_corp_sqs
+  events-store-sqs: ${self:custom.prefix}-events_store_sqs
+  events-vindi-sqs: ${self:custom.prefix}-events_vindi_sqs
+  events-message-sqs: ${self:custom.prefix}-events_message_sqs
+  verify-events-sqs: ${self:custom.prefix}-verify_events_sqs
+  message-gateway-sqs: ${self:custom.prefix}-message_gateway_sqs
+
+  splitStacks:
+    perFunction: true
+    perType: false
+
+  # optimize:
+  #   prefix: 'dist'
+  #   plugins: ['transform-decorators-legacy']
+  #   presets: ['es2015']
+  capacities:
+    - table: EventsTable  # DynamoDB Resource
+      read:
+        minimum: 5        # Minimum read capacity
+        maximum: 200      # Maximum read capacity
+        usage: 0.75       # Targeted usage percentage
+      write:
+        minimum: 5        # Minimum write capacity
+        maximum: 100      # Maximum write capacity
+        usage: 0.5        # Targeted usage percentage
+    - table: ErrorInterfaceTable  # DynamoDB Resource
+      read:
+        minimum: 5        # Minimum read capacity
+        maximum: 100      # Maximum read capacity
+        usage: 0.75       # Targeted usage percentage
+      write:
+        minimum: 5        # Minimum write capacity
+        maximum: 50      # Maximum write capacity
+        usage: 0.5        # Targeted usage percentage
+
+functions: ${file(_configs/serverless-dynamic.js)}
+
+resources:
+  #Policies
+  #- ${file(_configs/resources/policies.yml)}
+  # DynamoDB
+  - ${file(_configs/resources/dynamodb.yml)}
+  # SQS
+  - ${file(_configs/resources/sqs.yml)}
+  # ApiGateway
+  - ${file(_configs/resources/apigateway.yml)}
+
+

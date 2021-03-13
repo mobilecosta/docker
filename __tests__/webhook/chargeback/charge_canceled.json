@@ -1,0 +1,77 @@
+{
+  "event": {
+    "type": "charge_canceled",
+    "created_at": "2020-06-06T18:02:14.272-03:00",
+    "data": {
+      "charge": {
+        "id": 3172767,
+        "amount": "109.9",
+        "status": "canceled",
+        "due_at": "2020-06-09T23:59:59.000-03:00",
+        "paid_at": "2020-06-06T18:00:50.000-03:00",
+        "installments": 1,
+        "attempt_count": 1,
+        "next_attempt": null,
+        "print_url": null,
+        "created_at": "2020-06-06T17:27:56.000-03:00",
+        "updated_at": "2020-06-06T18:02:14.000-03:00",
+        "last_transaction": {
+          "id": 2111541,
+          "transaction_type": "refund",
+          "status": "success",
+          "amount": "109.9",
+          "installments": null,
+          "gateway_message": "Estorno efetuado com sucesso",
+          "gateway_response_code": null,
+          "gateway_authorization": "10F0C4A305491D646A75DBFFEEAEA7CA",
+          "gateway_transaction_id": "c3b101fc-743f-4abb-94ec-c79e6073fe0a",
+          "gateway_response_fields": {
+            "nsu": "8F06031CB80B270784064CA8255B7443"
+          },
+          "fraud_detector_score": null,
+          "fraud_detector_status": null,
+          "fraud_detector_id": null,
+          "created_at": "2020-06-06T18:02:14.000-03:00",
+          "gateway": {
+            "id": 1195,
+            "connector": "fake"
+          },
+          "payment_profile": {
+            "id": 238185,
+            "holder_name": "JOSE SILVA",
+            "registry_code": null,
+            "bank_branch": null,
+            "bank_account": null,
+            "card_expiration": "2021-12-31T23:59:59.000-03:00",
+            "card_number_first_six": "555555",
+            "card_number_last_four": "5557",
+            "token": "8cd7e77a-8f4f-45d9-82ec-d1247b46bbd9",
+            "created_at": "2020-06-06T17:59:29.000-03:00",
+            "payment_company": {
+              "id": 12,
+              "name": "MasterCard",
+              "code": "mastercard"
+            }
+          }
+        },
+        "payment_method": {
+          "id": 2385,
+          "public_name": "Cartão de crédito",
+          "name": "Cartão de crédito",
+          "code": "credit_card",
+          "type": "PaymentMethod::CreditCard"
+        },
+        "bill": {
+          "id": 3230444,
+          "code": null
+        },
+        "customer": {
+          "id": 308832,
+          "name": "José Silva",
+          "email": "jose@ze.com",
+          "code": "29c00611476186f1af090f253f234153785fb3ece15541994c25e6248f4987d1"
+        }
+      }
+    }
+  }
+}

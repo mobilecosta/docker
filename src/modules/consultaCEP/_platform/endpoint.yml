@@ -1,0 +1,19 @@
+consultaCEP:
+  handler: src/modules/consultaCEP/endpoints/read.handler
+  description: Validate CEP
+  events:
+    - http:
+        method: get
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: services/consulta-cep/{cep}
+        request:
+          parameters:
+            paths:
+              cep: true
+        cors: true

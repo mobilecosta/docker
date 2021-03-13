@@ -1,0 +1,71 @@
+{
+    "name": "ServicesConfirm-pin",
+    "event": [
+        {
+            "listen": "test",
+            "script": {
+                "id": "ee3b1b72-bbde-4335-a98f-85996e10aadc",
+                "exec": [
+                    "pm.test(\"Successful POST request\", function () {\r",
+                    "    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+                    "    \r",
+                    "});"
+                ],
+                "type": "text/javascript"
+            }
+        }
+    ],
+    "request": {
+        "auth": {
+            "type": "oauth2",
+            "oauth2": [
+                {
+                    "key": "accessToken",
+                    "value": "eyJraWQiOiJCWGVWV0ZXVmxSYUgwVnZzYU1aQnR4c0tNZkNoSGtcL2hUU1lDY0JBQ3A0RT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxOTFiMXM0dXE5MzZhbGg2cW92a3AzbzNvayIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGV2LW1wbi1zZXJ2aWNvc1wvcmVhZCBkZXYtbXBuLXNlcnZpY29zXC93cml0ZSIsImF1dGhfdGltZSI6MTU5MjgyNjgzOCwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfdjJoeE9ueWNKIiwiZXhwIjoxNTkyODMwNDM4LCJpYXQiOjE1OTI4MjY4MzgsInZlcnNpb24iOjIsImp0aSI6IjIzNjg0NzVhLTI4ZTgtNDgxMS04NTk2LTIwZTk5MTk2OWYwMiIsImNsaWVudF9pZCI6IjE5MWIxczR1cTkzNmFsaDZxb3ZrcDNvM29rIn0.dJnutw5QvjvS2HigB0Hag9UN-pJrlA8dWhLaNG1NxiTdXy2zjN4XgHA8u3E6rP_Rot6mcWUsVleyokJZO36qDbhe5qDUOKTerHrLQbNnAn3_qtTVt4nkxt6JLIKJCadE5Wr6L7GO_GgdvMbaj1-rdV8v3amGeyCTDImRPBYeJvPqpvBO10ztijrekk9J87OHLKcyVygMvgKeON3ddHxmEGA4g1cUx4wAzaj_WMtCld1yxE9KJV4eTej9drmmmb2iiRwN03k4Bw-5HoHLb_cOm94rJv69YYRdrFY87arwa3mMeDWXlB6AossxdW7Mr_LfvK2NbQ61-3E6eJFbwYtYiQ",
+                    "type": "string"
+                },
+                {
+                    "key": "tokenType",
+                    "value": "Bearer",
+                    "type": "string"
+                },
+                {
+                    "key": "addTokenTo",
+                    "value": "header",
+                    "type": "string"
+                }
+            ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+            "raw": "https://databus-api.totvs.com.br/develop/services/services/confirm-pin/?customerId=18d93704c6391f3afa4c7085b17855f4cc0130b34f6832917071cdbf0368bd60&pin",
+            "protocol": "https",
+            "host": [
+                "7c460qomri",
+                "execute-api",
+                "us-east-1",
+                "amazonaws",
+                "com"
+            ],
+            "path": [
+                "dev",
+                "services",
+                "services",
+                "confirm-pin",
+                ""
+            ],
+            "query": [
+                {
+                    "key": "customerId",
+                    "value": "18d93704c6391f3afa4c7085b17855f4cc0130b34f6832917071cdbf0368bd60"
+                },
+                {
+                    "key": "pin",
+                    "value": null
+                }
+            ]
+        }
+    },
+    "response": []
+}

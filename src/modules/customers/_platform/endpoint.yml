@@ -1,0 +1,63 @@
+# Customers API Endpoints
+customersCreate:
+  handler: src/modules/customers/endpoints/create.handler
+  description: Create Customers in Serverless Platform
+  events:
+    - http:
+        method: post
+        path: customers
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write   
+
+customersUpdate:
+  handler: src/modules/customers/endpoints/update.handler
+  description: Update Customers in Serverless Platform
+  events:
+    - http:
+        method: put
+        path: customers/{customerId}
+        cors: true
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write   
+        request:
+          parameters:
+            paths:
+              customerId: true
+
+
+customersGetOne:
+  handler: src/modules/customers/endpoints/read.handler
+  description: Get Customer By Mail, Document or Id
+  events:
+    - http:
+        method: get
+        path: customers
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write
+        cors: true
+        request:
+            parameters:
+                querystrings:
+                  url: true
+
+                  
+
+  
+
+

@@ -1,0 +1,161 @@
+Resources:
+  # ReceiveVindiWebhookQueue:
+  #   Type: AWS::SQS::Queue
+  #   Properties:
+  #     QueueName: ${self:custom.vindi-webhook-sqs}
+  #     MessageRetentionPeriod: 1209600
+  #     VisibilityTimeout: 60
+
+  PayloadLogQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.payload-log-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  CustomersQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.customers-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+  
+  ShareSubscriptionsQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.subscriptions-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  CancelSubscriptionsQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.cancel-subscription-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+  
+  WHSubscriptionCanceledQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.wh-subscription-canceled-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  WHChargeCreatedQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.wh-charge-created-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  WHChargeRejectedQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.wh-charge-rejected-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  WHBillCreatedQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.wh-bill-created-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  WHBillPaidQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.wh-bill-paid-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  WHPaymentProfileCreatedQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.wh-payment-profile-created-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  WHSubscriptionCreatedQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.wh-subscription-created-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+  
+  EventsEmpoderaQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.events-empodera-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  # EventsLicenciadorErrorHandlingQueue:
+  #   Type: AWS::SQS::Queue
+  #   Properties:
+  #     QueueName: ${self:custom.licenciador_error_handling}
+  #     MessageRetentionPeriod: 1209600
+  #     VisibilityTimeout: 60
+
+  EventsLicenciadorQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.events-licenciador-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 61
+
+  EventsProtheusQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.events-protheus-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  EventsProtheusCorpQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.events-protheus-corp-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  EventsStoreQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.events-store-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  EventsVindiQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.events-vindi-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  WHBillCanceledQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.wh-bill-canceled-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  EventsMessageQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.events-message-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  VerifyEventsQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.verify-events-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60
+
+  MessageGatewayQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: ${self:custom.message-gateway-sqs}
+      MessageRetentionPeriod: 1209600
+      VisibilityTimeout: 60

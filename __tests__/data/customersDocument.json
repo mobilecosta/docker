@@ -1,0 +1,40 @@
+{
+	"name": "CustomersDocument",
+	"protocolProfileBehavior": {
+		"disableBodyPruning": true
+	},
+	"request": {
+		"method": "GET",
+		"header": [],
+		"body": {
+			"mode": "raw",
+			"raw": "",
+			"options": {
+				"raw": {
+					"language": "json"
+				}
+			}
+		},
+		"url": {
+			"raw": "{{API_GATEWAY}}/customers?document=41543337040",
+			"host": [
+				"{{API_GATEWAY}}"
+			],
+			"path": [
+				"customers"
+			],
+			"query": [
+				{
+					"key": "document",
+					"value": "41543337040"
+				},
+				{
+					"key": "registryCode",
+					"value": null,
+					"disabled": true
+				}
+			]
+		}
+	},
+	"response": []
+}

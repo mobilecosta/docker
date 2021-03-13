@@ -1,0 +1,60 @@
+{
+  "event": {
+    "type": "period_created",
+    "created_at": "2020-06-06T17:27:56.940-03:00",
+    "data": {
+      "period": {
+        "id": 3245831,
+        "billing_at": "2020-06-06T00:00:00.000-03:00",
+        "cycle": 1,
+        "start_at": "2020-06-06T00:00:00.000-03:00",
+        "end_at": "2020-07-05T23:59:59.000-03:00",
+        "duration": 2591999,
+        "customer": {
+          "id": 308832,
+          "name": "José Silva",
+          "email": "jose@ze.com",
+          "code": "29c00611476186f1af090f253f234153785fb3ece15541994c25e6248f4987d1"
+        },
+        "subscription": {
+          "id": 211733,
+          "code": null,
+          "plan": {
+            "id": 16967,
+            "name": "Plano Mensal",
+            "code": "TOTVSMENSAL"
+          },
+          "customer": {
+            "id": 308832,
+            "name": "José Silva",
+            "email": "jose@ze.com",
+            "code": "29c00611476186f1af090f253f234153785fb3ece15541994c25e6248f4987d1"
+          }
+        },
+        "usages": [
+          {
+            "id": 8938410,
+            "quantity": 1,
+            "description": null,
+            "created_at": "2020-06-06T17:27:56.000-03:00",
+            "metadata": {},
+            "product_item": {
+              "id": 339464,
+              "product": {
+                "id": 53960,
+                "name": "Cobrança Recorrente",
+                "code": null
+              }
+            },
+            "bill": {
+              "id": 3230444,
+              "code": null
+            }
+          }
+        ],
+        "created_at": "2020-06-06T17:27:56.000-03:00",
+        "updated_at": "2020-06-06T17:27:56.000-03:00"
+      }
+    }
+  }
+}

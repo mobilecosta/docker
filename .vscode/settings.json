@@ -1,0 +1,10 @@
+{
+    "totvsLanguageServer.welcomePage": false,
+    "[advpl]": {
+        "files.encoding": "windows1252"
+    },
+    "totvsLanguageServer.askEncodingChange": false,
+    "advpl.projectActive": "mpn_servicos",
+    "advpl.environments": [],
+    "advpl.selectedEnvironment": "Selecione o Ambiente"
+}

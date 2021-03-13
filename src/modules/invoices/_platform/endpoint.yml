@@ -1,0 +1,35 @@
+addNFE:
+  handler: src/modules/invoices/endpoints/create.handler
+  description: Register invoice data
+  events:
+    - http:
+        method: post
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: documents/invoice
+        cors: true
+
+getNFE:
+  handler: src/modules/invoices/endpoints/read.handler
+  description: Get invoice data
+  events:
+    - http:
+        method: get
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: documents/invoice/{customerId}
+        request:
+          parameters:
+            paths:
+              customerId: true
+        cors: true

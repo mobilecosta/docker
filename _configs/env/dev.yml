@@ -1,0 +1,44 @@
+ENV: ${self:provider.stage}
+APPNAME: ${self:service}
+
+CUSTOMERS_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.customers-sqs}'
+#INTERFACES_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.interfaces-sqs}'
+SUBSCRIPTIONS_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.subscriptions-sqs}'
+VINDI_WEBHOOK_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.vindi-webhook-sqs}'
+
+PAYLOAD_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.payload-log-sqs}'
+CANCEL_SUBSCRIPTION_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.cancel-subscription-sqs}'
+WH_SUBSCRIPTION_CANCELED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-subscription-canceled-sqs}'
+WH_CHARGE_CREATED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-charge-created-sqs}'
+
+WH_CHARGE_REJECTED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-charge-rejected-sqs}'
+WH_BILL_CREATED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-bill-created-sqs}'
+WH_BILL_PAID_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-bill-paid-sqs}'
+WH_PAYMENT_PROFILE_CREATED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-payment-profile-created-sqs}'
+WH_SUBSCRIPTION_CREATED_QUEUE: 'https://sqs.${self:provider.region}.amazonaws.com/${self:custom.accountId}/${self:custom.wh-subscription-created-sqs}'
+
+LICENCIADOR_BASE_URL: 'https://tnedc617ag.execute-api.us-east-1.amazonaws.com/qa'
+PROTHEUS_URL: 'https://apimprod.totvs.com.br/api-homologacao'
+EMPODERA_BASE_URL: 'https://homolog-empodera.totvs.com/api/area/bematech'
+VINDI_URL: 'https://sandbox-app.vindi.com.br/api/v1'
+STORE_URL: 'https://tflow.mirror.store.totvs.com/api'
+SERPRO_CPF_URL: 'https://gateway.apiserpro.serpro.gov.br/consulta-cpf-df-trial/v1/cpf'
+SERPRO_CNPJ_URL: 'https://gateway.apiserpro.serpro.gov.br/consulta-cnpj-df-trial/v1/cnpj'
+ZENVIA_URL: 'https://api-rest.zenvia.com/services'
+PROTHEUS_CORP_URL: 'https://apimprod.totvs.com.br/api-homologacao'
+
+PRODUCTID_VINDI: '53960'
+
+# EMPODERA_KEY: ${ssm:EMPODERA_KEY}
+# EMPODERA_TOKEN: ${ssm:EMPODERA_TOKEN}
+# STORE_KEY: ${ssm:STORE_KEY}
+# STORE_TOKEN: ${ssm:STORE_TOKEN}
+# TOKEN_LICENCIADOR: ${ssm:TOKEN_LICENCIADOR}
+# SERPRO_CNPJ_TOKEN: ${ssm:SERPRO_CNPJ_TOKEN}
+# SERPRO_CPF_TOKEN: ${ssm:SERPRO_CPF_TOKEN}
+# VINDI_TOKEN: ${ssm:VINDI_TOKEN}
+# ZENVIA_KEY: ${ssm:ZENVIA_KEY}
+# ZENVIA_TOKEN: ${ssm:ZENVIA_TOKEN}
+# PROTHEUS_TOKEN: ${ssm:PROTHEUS_TOKEN}
+# LICENCIADOR_USER: ${ssm:LICENCIADOR_USER}
+# LICENCIADOR_PASS: ${ssm:LICENCIADOR_PASS}

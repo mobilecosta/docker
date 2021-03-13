@@ -1,0 +1,42 @@
+{
+	"name": "ValidateDocument",
+	"event": [
+		{
+			"listen": "test",
+			"script": {
+				"id": "1acfe4d5-79d6-4ed4-99b1-e0f6fedca69d",
+				"exec": [
+					"pm.test(\"Successful POST request\", function () {\r",
+					"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+					"});"
+				],
+				"type": "text/javascript"
+			}
+		}
+	],
+	"request": {
+		"method": "POST",
+		"header": [],
+		"body": {
+			"mode": "raw",
+			"raw": "{\n\t\"cpf\": \"41543337040\"\n}",
+			"options": {
+				"raw": {
+					"language": "json"
+				}
+			}
+		},
+		"url": {
+			"raw": "{{API_GATEWAY}}/validate/document\n",
+			"host": [
+				"{{API_GATEWAY}}"
+			],
+			"path": [
+				"validate",
+				"document\n"
+			]
+		},
+		"description": "Verificar CPF/CNPJ (SERPRO)"
+	},
+	"response": []
+}

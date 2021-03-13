@@ -1,0 +1,40 @@
+{
+	"name": "DeleteSubscription",
+	"event": [
+		{
+			"listen": "test",
+			"script": {
+				"id": "6bacf854-4d5e-4bbf-bae4-8b5b073ef114",
+				"exec": [
+					"pm.test(\"Successful POST request\", function () {\r",
+					"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+					"});"
+				],
+				"type": "text/javascript"
+			}
+		}
+	],
+	"request": {
+		"method": "DELETE",
+		"header": [],
+		"body": {
+			"mode": "raw",
+			"raw": "{\r\n  \"customerId\": \"fd9985bb6d42ce05909953a896a18f384956374818ef193226b7aad91d0773bb\",\r\n  \"reason\": {\r\n    \"main\": \"main reason\",\r\n    \"sub\": \"sub reason\",\r\n    \"details\": \"some relevant details\"\r\n  }\r\n}",
+			"options": {
+				"raw": {
+					"language": "json"
+				}
+			}
+		},
+		"url": {
+			"raw": "{{API_GATEWAY}}/subscriptions\n",
+			"host": [
+				"{{API_GATEWAY}}"
+			],
+			"path": [
+				"subscriptions\n"
+			]
+		}
+	},
+	"response": []
+}

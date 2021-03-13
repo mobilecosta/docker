@@ -1,0 +1,62 @@
+{
+	"name": "CustomersEmail",
+	"event": [
+		{
+			"listen": "test",
+			"script": {
+				"id": "e660a857-1a57-4652-aabc-9c56dcc3a4ab",
+				"exec": [
+					"pm.test(\"Successful POST request\", function () {\r",
+					"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+					"    \r",
+					"});"
+				],
+				"type": "text/javascript"
+			}
+		}
+	],
+	"protocolProfileBehavior": {
+		"disableBodyPruning": true
+	},
+	"request": {
+		"method": "GET",
+		"header": [
+			{
+				"key": "Content-Type",
+				"value": " application/x-www-form-urlencoded",
+				"type": "text",
+				"disabled": true
+			}
+		],
+		"body": {
+			"mode": "raw",
+			"raw": "",
+			"options": {
+				"raw": {
+					"language": "json"
+				}
+			}
+		},
+		"url": {
+			"raw": "{{API_GATEWAY}}/customers?email=joanafaria3@email.com",
+			"host": [
+				"{{API_GATEWAY}}"
+			],
+			"path": [
+				"customers"
+			],
+			"query": [
+				{
+					"key": "email",
+					"value": "joanafaria3@email.com"
+				},
+				{
+					"key": "\n",
+					"value": null,
+					"disabled": true
+				}
+			]
+		}
+	},
+	"response": []
+}

@@ -1,0 +1,40 @@
+{
+    "name": "SubscriptionsDocument",
+    "protocolProfileBehavior": {
+        "disableBodyPruning": true
+    },
+    "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+            "mode": "raw",
+            "raw": " {\"customer\":[{\n\t\t\"registryCode\": \"54447820000155\"\n\t}]\n}",
+            "options": {
+                "raw": {
+                    "language": "json"
+                }
+            }
+        },
+        "url": {
+            "raw": "{{API_GATEWAY}}/subscriptions?document=41543337040",
+            "host": [
+                "{{API_GATEWAY}}"
+            ],
+            "path": [
+                "subscriptions"
+            ],
+            "query": [
+                {
+                    "key": "document",
+                    "value": null,
+                    "disabled": true
+                },
+                {
+                    "key": "document",
+                    "value": "41543337040"
+                }
+            ]
+        }
+    },
+    "response": []
+}

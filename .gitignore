@@ -1,0 +1,11 @@
+node_modules
+dist
+.build
+.serverless
+.history
+.scannerwork
+*.dynamodb
+_dynamodb
+yarn.lock
+package-lock.json
+tmp

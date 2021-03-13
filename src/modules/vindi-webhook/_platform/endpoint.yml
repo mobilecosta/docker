@@ -1,0 +1,14 @@
+# Customers API Endpoints
+vindiWebhook:
+  handler: src/modules/vindi-webhook/endpoints/create.handler
+  description: Receives the POST response from Vindi vendor with payment status updates
+  events:
+    - http:
+        method: post  
+        path: webhooks/vindi/{secret}
+        request:
+          parameters:
+            paths:
+              secret: true
+        cors: true
+  

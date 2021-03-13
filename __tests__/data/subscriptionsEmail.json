@@ -1,0 +1,40 @@
+{
+	"name": "SubscriptionsEmail",
+	"protocolProfileBehavior": {
+		"disableBodyPruning": true
+	},
+	"request": {
+		"method": "GET",
+		"header": [],
+		"body": {
+			"mode": "raw",
+			"raw": "",
+			"options": {
+				"raw": {
+					"language": "json"
+				}
+			}
+		},
+		"url": {
+			"raw": "{{API_GATEWAY}}/subscriptions?email=joanafaria3@email.com\n",
+			"host": [
+				"{{API_GATEWAY}}"
+			],
+			"path": [
+				"subscriptions"
+			],
+			"query": [
+				{
+					"key": "email",
+					"value": "joanafaria3@email.com\n"
+				},
+				{
+					"key": "email",
+					"value": null,
+					"disabled": true
+				}
+			]
+		}
+	},
+	"response": []
+}

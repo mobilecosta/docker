@@ -1,0 +1,40 @@
+{
+	"name": "CreateNewSubscription",
+	"event": [
+		{
+			"listen": "test",
+			"script": {
+				"id": "a0144f6e-5962-47a2-8c77-1c5ae58d544f",
+				"exec": [
+					"pm.test(\"Successful POST request\", function () {\r",
+					"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+					"});"
+				],
+				"type": "text/javascript"
+			}
+		}
+	],
+	"request": {
+		"method": "POST",
+		"header": [],
+		"body": {
+			"mode": "raw",
+			"raw": "{\r\n    \"startAt\": null,\r\n    \"customerId\": \"beddcc00837289a29408ca36ec14c90642dc699ea4220e1560b00100fc74ca2f\",\r\n    \"paymentMethod\": \"credit_card\",\r\n    \"salesOrder\": \"123\",\r\n    \"planCode\": \"TOTVSMENSAL\",\r\n    \"price\": \"209.90\",\r\n    \"offers\": [\r\n        {\r\n            \"code\": \"XYZ\",\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"code\": \"RTY\",\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"discount\": {\r\n        \"amount\": \"19.90\",\r\n        \"cycles\": 1\r\n    }\r\n}\r\n",
+			"options": {
+				"raw": {
+					"language": "json"
+				}
+			}
+		},
+		"url": {
+			"raw": "{{API_GATEWAY}}/subscriptions\n",
+			"host": [
+				"{{API_GATEWAY}}"
+			],
+			"path": [
+				"subscriptions\n"
+			]
+		}
+	},
+	"response": []
+}

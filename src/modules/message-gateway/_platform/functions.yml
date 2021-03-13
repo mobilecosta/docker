@@ -1,0 +1,9 @@
+messageGatewayQueueListener:
+  handler: src/modules/message-gateway/functions/send.handler
+  description: Listener MessageGatewayQueue and send messages by WhatsApp, SMS or E-mail
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - MessageGatewayQueue
+            - Arn

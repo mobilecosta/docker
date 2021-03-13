@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "843ba252-9dfb-43a9-85bd-6f98d43f2f78",
+		"name": "Totvs dev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MPN",
+			"item": [
+				{
+					"name": "Customers Create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ef0e47ae-30b0-4781-bd51-0ccb36964eaf",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJraWQiOiJCWGVWV0ZXVmxSYUgwVnZzYU1aQnR4c0tNZkNoSGtcL2hUU1lDY0JBQ3A0RT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxZXRoOW9pOTF0YTRkYWh1dDhpbTNmNXRscSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGV2LW1wbi1zZXJ2aWNvc1wvcmVhZCIsImF1dGhfdGltZSI6MTU5MDcwNzE4MCwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfdjJoeE9ueWNKIiwiZXhwIjoxNTkwNzEwNzgwLCJpYXQiOjE1OTA3MDcxODAsInZlcnNpb24iOjIsImp0aSI6IjZkZmQxYzM3LWJjZGMtNDhjYi1iNTFhLTE3ZTczMmY4YjU1NyIsImNsaWVudF9pZCI6IjFldGg5b2k5MXRhNGRhaHV0OGltM2Y1dGxxIn0.AaBAy1H4CY041_qQW-poe8yhcUcpA1szAlj3bT-qrkUI7zsbgEpGK4pkSnAVPImAwEJBwUBpJzK5y-i-9Dd_YCMuHk6P8hi1K-5-cmOtNon5dxvOVkf3vQM0HeDAUc-T2LanOOmJ1pZ-DcTn9JIig-OzTFIPvGE99nc5j260F4R0ZAtkj3NgH355h310-M7MOSfLdCwF-GZDtidbLRNuA8ZSVjFpqMEFhTlwGxfbxTlqC6rgsxtHGAQtO589-rOdNviZFlfD4841rfWAL--WsMDZJ9zQ-yw522ggZC-vYBItGzqhG_8O1swi-zEvqS8MtbqKJP-9p9xlP4QDN4_A_g",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Samuel Mendonça\",\n    \"trade\": \"Samuel Mendonça\",\n    \"email\": \"samuelmendonca1@email.com\",\n    \"isLegalEntity\": false,\n    \"registryCode\": \"644.658.640-00\",\n    \"registryStateCode\": \"ISENTO\",\n    \"cnae\": \"\",\n    \"notes\": \"\",\n    \"contactPerson\": \"Samuel Mendonça\",\n    \"website\": \"https://mmmmm.com\",\n    \"address\": {\n      \"street\": \"Av. John Boyd Dunlop\",\n      \"number\": \"123\",\n      \"additionalDetails\": \"Sala 1\",\n      \"zipcode\": \"01255020\",\n      \"neighborhood\": \"Nova Campinas\",\n      \"city\": \"SAO PAULO\",\n      \"state\": \"SP\"\n    },\n    \"phones\": [\n      {\n        \"phoneType\": \"mobile\",\n        \"authorizesSMS\": true,\n        \"authorizesWhatsApp\": true,\n        \"phone\": {\n          \"country\": \"55\",\n          \"area\": \"19\",\n          \"number\": \"987654444\",\n          \"extension\": \"\"\n        }\n      }\n    ],\n    \"isOver16\": true,\n    \"over16Metadata\": {\n      \"ip\": \"9.85.36.127\",\n      \"details\": \"Cors Origin Information\"\n    }\n  }\t",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/customers",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewSubscription",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a0144f6e-5962-47a2-8c77-1c5ae58d544f",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\": null,\r\n    \"customerId\": \"beddcc00837289a29408ca36ec14c90642dc699ea4220e1560b00100fc74ca2f\",\r\n    \"paymentMethod\": \"credit_card\",\r\n    \"salesOrder\": \"123\",\r\n    \"planCode\": \"TOTVSMENSAL\",\r\n    \"price\": \"209.90\",\r\n    \"offers\": [\r\n        {\r\n            \"code\": \"XYZ\",\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"code\": \"RTY\",\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"discount\": {\r\n        \"amount\": \"19.90\",\r\n        \"cycles\": 1\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/subscriptions\n",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"subscriptions\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSubscription",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6bacf854-4d5e-4bbf-bae4-8b5b073ef114",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customerId\": \"fd9985bb6d42ce05909953a896a18f384956374818ef193226b7aad91d0773bb\",\r\n  \"reason\": {\r\n    \"main\": \"main reason\",\r\n    \"sub\": \"sub reason\",\r\n    \"details\": \"some relevant details\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/subscriptions\n",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"subscriptions\n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomersEmail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e660a857-1a57-4652-aabc-9c56dcc3a4ab",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": " application/x-www-form-urlencoded",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/customers?email=joanafaria3@email.com",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "joanafaria3@email.com"
+								},
+								{
+									"key": "\n",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomersDocument",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/customers?document=41543337040",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "document",
+									"value": "41543337040"
+								},
+								{
+									"key": "registryCode",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SubscriptionsEmail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/subscriptions?email=joanafaria3@email.com\n",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "joanafaria3@email.com\n"
+								},
+								{
+									"key": "email",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SubscriptionsDocument",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"customer\":[{\n\t\t\"registryCode\": \"54447820000155\"\n\t}]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/subscriptions?document=41543337040",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "document",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "document",
+									"value": "41543337040"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SubscriptionsCustomerId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"customerId\":\"In+HetBgA245D0jjlNtHiiSCM3vmbKDxkRYFyTNVGaM=\"\t\n\t\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/subscriptions?customerId=fd9985bb6d42ce05909953a896a18f384956374818ef193226b7aad91d0773bb",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "32oZvvnnEdh3FuecrOLz/nmjWPv6oD9ozPyVliJdZFI=",
+									"disabled": true
+								},
+								{
+									"key": "customerId",
+									"value": "fd9985bb6d42ce05909953a896a18f384956374818ef193226b7aad91d0773bb"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ValidateDocument",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1acfe4d5-79d6-4ed4-99b1-e0f6fedca69d",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cpf\": \"41543337040\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/validate/document\n",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"validate",
+								"document\n"
+							]
+						},
+						"description": "Verificar CPF/CNPJ (SERPRO)"
+					},
+					"response": []
+				},
+				{
+					"name": "SubscriptionsOrder",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "eyJraWQiOiJCWGVWV0ZXVmxSYUgwVnZzYU1aQnR4c0tNZkNoSGtcL2hUU1lDY0JBQ3A0RT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI1ODhkdDhyZGhzMjRqdGtjcm10bG1vMzJzOSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGV2LW1wbi1zZXJ2aWNvc1wvcmVhZCBkZXYtbXBuLXNlcnZpY29zXC93cml0ZSIsImF1dGhfdGltZSI6MTU5MTk2MTU0NCwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfdjJoeE9ueWNKIiwiZXhwIjoxNTkxOTY1MTQ0LCJpYXQiOjE1OTE5NjE1NDQsInZlcnNpb24iOjIsImp0aSI6ImJkNzg3NjkzLTVhYjgtNDNkNy1hOGM5LTVjZjA4OGUzZmJkMyIsImNsaWVudF9pZCI6IjU4OGR0OHJkaHMyNGp0a2NybXRsbW8zMnM5In0.EgIVIM1PUOX8gbbuXBE-1Oj1wXTx8hIKIas3Ik3BVE9w-lzUNCmbZYHsPEyslRasmPdXlRCWi0yL_ZgjSxiSHbuLLZDdZQZD3pJ55ZxKAIHlRhZ0EHyxyBBtQuUqBqt-piZLEmaQIwmz6uKn50pE4lplFh2nFEkwx7b934sJfp0FWLer7S-bsuE5et85f-9a5a2eG72u5HCvEHsrTVZ-ObZlXNyNcLritdp_KrNq3HbQ2jPaqoF6bocsleB2yQlEdr7lphH_CKCPsdoJ8Xl8g8fPw2g95WOrY9sa5EMIWc2kSzH3_HME0HGFH1GZjf1JW8HHC73hAT-soY92vuqz7A",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/subscriptions?salesOrder=1",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "salesOrder",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CustomersCustomerId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_GATEWAY}}/customers?customerId=fd9985bb6d42ce05909953a896a18f384956374818ef193226b7aad91d0773bb",
+							"host": [
+								"{{API_GATEWAY}}"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "fd9985bb6d42ce05909953a896a18f384956374818ef193226b7aad91d0773bb"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vindi WebHook",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "accessToken",
+						"value": "eyJraWQiOiJCWGVWV0ZXVmxSYUgwVnZzYU1aQnR4c0tNZkNoSGtcL2hUU1lDY0JBQ3A0RT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIxOTFiMXM0dXE5MzZhbGg2cW92a3AzbzNvayIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGV2LW1wbi1zZXJ2aWNvc1wvcmVhZCBkZXYtbXBuLXNlcnZpY29zXC93cml0ZSIsImF1dGhfdGltZSI6MTU5Mjk2MjEzMywiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfdjJoeE9ueWNKIiwiZXhwIjoxNTkyOTY1NzMzLCJpYXQiOjE1OTI5NjIxMzMsInZlcnNpb24iOjIsImp0aSI6ImQ4N2MyNWQwLTJlNDMtNDc3MS05YjJmLTZiOGRiYjdhYzVjNCIsImNsaWVudF9pZCI6IjE5MWIxczR1cTkzNmFsaDZxb3ZrcDNvM29rIn0.IuoCRDIU0hG7N3GZpLiPeD1cNylLCsJi_w_byojzQTwL-VcKkpCUZXLHedITQDIhBbGae5CnOLta8DBUmH_dJYTsncpTgeWv-zBMddSTdghLBPusVpC5eq7XPbLNwulV-S27ttiiRBh7quk4QCEsTW-BPUBTo9YJTz5JWFso9B1J8GLX0ZKH9tkOoQ_dsArFNrVBOsOSbC30dLPXA9BuaLTzpiaM_G9Y1db_LP862Ldue5mU57ypxD4SQJg2N8AMlxQAz9x_IP8yqXldm9TXEJ28sSL2oAQwIYTopsXL2es2CkNEJc6m1MztM3WEd9WEhbpQaZ6SvEaRnTdT675VbA",
+						"type": "string"
+					},
+					{
+						"key": "tokenType",
+						"value": "Bearer",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "900996a5-f903-460b-98d1-28fa7a259c91",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bece0e4f-0f6d-406a-b6ee-04eab93cc2fb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "dbfd37a7-2947-48b1-9636-b5c9c9e49010",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "cc77cfcb-f6a7-4e0e-881c-e93136688030",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

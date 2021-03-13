@@ -1,0 +1,112 @@
+# Subscriptions API Endpoints
+subscriptionsCreate:
+  handler: src/modules/subscriptions/endpoints/create.handler
+  description: Create Subscriptions in Serverless Platform
+  events:
+    - http:
+        method: post
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: subscriptions
+        cors: true
+
+subscriptionsCancel:
+  handler: src/modules/subscriptions/endpoints/delete.handler
+  description: Delete Subscriptions
+  events:
+    - http:
+        method: delete
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: subscriptions
+        cors: true
+
+subscriptionsGetOne:
+  handler: src/modules/subscriptions/endpoints/read.handler
+  description: Get Customer Subscription
+  events:
+    - http:
+        method: get
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write
+        path: subscriptions
+        cors: true
+        request:
+            parameters:
+                querystrings:
+                  url: true
+
+subscriptionUpdatePaymentMethod:
+  handler: src/modules/subscriptions/endpoints/update.handler
+  description: Update Customer Subscription (Payment)
+  events:
+    - http:
+        method: put
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write
+        path: subscriptions/payment/{customerId}
+        cors: true
+        request:
+          parameters:
+            paths:
+              customerId: true
+
+newPurchase:
+  handler: src/modules/subscriptions/endpoints/newitem.handler
+  description: Purchase additional item
+  events:
+    - http:
+        method: post
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: subscriptions/add/{document}
+        cors: true
+        request:
+          parameters:
+            paths:
+              document: true
+
+changePrice:
+  handler: src/modules/subscriptions/endpoints/changePrice.handler
+  description: Change Subscription Price
+  events:
+    - http:
+        method: put
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: subscriptions/changePrice
+        cors: true
+        request:
+          parameters:
+            paths:
+              document: true

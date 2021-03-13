@@ -1,0 +1,55 @@
+{
+    "name": "SubscriptionsOrder",
+    "protocolProfileBehavior": {
+        "disableBodyPruning": true
+    },
+    "request": {
+        "auth": {
+            "type": "oauth2",
+            "oauth2": [
+                {
+                    "key": "accessToken",
+                    "value": "eyJraWQiOiJCWGVWV0ZXVmxSYUgwVnZzYU1aQnR4c0tNZkNoSGtcL2hUU1lDY0JBQ3A0RT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI1ODhkdDhyZGhzMjRqdGtjcm10bG1vMzJzOSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiZGV2LW1wbi1zZXJ2aWNvc1wvcmVhZCBkZXYtbXBuLXNlcnZpY29zXC93cml0ZSIsImF1dGhfdGltZSI6MTU5MTk2MTU0NCwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfdjJoeE9ueWNKIiwiZXhwIjoxNTkxOTY1MTQ0LCJpYXQiOjE1OTE5NjE1NDQsInZlcnNpb24iOjIsImp0aSI6ImJkNzg3NjkzLTVhYjgtNDNkNy1hOGM5LTVjZjA4OGUzZmJkMyIsImNsaWVudF9pZCI6IjU4OGR0OHJkaHMyNGp0a2NybXRsbW8zMnM5In0.EgIVIM1PUOX8gbbuXBE-1Oj1wXTx8hIKIas3Ik3BVE9w-lzUNCmbZYHsPEyslRasmPdXlRCWi0yL_ZgjSxiSHbuLLZDdZQZD3pJ55ZxKAIHlRhZ0EHyxyBBtQuUqBqt-piZLEmaQIwmz6uKn50pE4lplFh2nFEkwx7b934sJfp0FWLer7S-bsuE5et85f-9a5a2eG72u5HCvEHsrTVZ-ObZlXNyNcLritdp_KrNq3HbQ2jPaqoF6bocsleB2yQlEdr7lphH_CKCPsdoJ8Xl8g8fPw2g95WOrY9sa5EMIWc2kSzH3_HME0HGFH1GZjf1JW8HHC73hAT-soY92vuqz7A",
+                    "type": "string"
+                },
+                {
+                    "key": "tokenType",
+                    "value": "Bearer",
+                    "type": "string"
+                },
+                {
+                    "key": "addTokenTo",
+                    "value": "header",
+                    "type": "string"
+                }
+            ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+            "mode": "raw",
+            "raw": "",
+            "options": {
+                "raw": {
+                    "language": "json"
+                }
+            }
+        },
+        "url": {
+            "raw": "{{API_GATEWAY}}/subscriptions?salesOrder=1",
+            "host": [
+                "{{API_GATEWAY}}"
+            ],
+            "path": [
+                "subscriptions"
+            ],
+            "query": [
+                {
+                    "key": "salesOrder",
+                    "value": "1"
+                }
+            ]
+        }
+    },
+    "response": []
+}

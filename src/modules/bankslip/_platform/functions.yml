@@ -1,0 +1,5 @@
+# Internal Processing Fuctions
+# cnabHandler:
+#   handler: src/modules/bankslip/functions/cnab-s3.handler
+#   description: Listener CNAB put into S3 bucket
+        

@@ -1,0 +1,20 @@
+# Internal Processing Fuctions
+subscriptionsQueueListener:
+  handler: src/modules/subscriptions/functions/subscriptions-sqs.handler
+  description: Listener SubscriptionsQueue send message to Dynamo
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - ShareSubscriptionsQueue
+            - Arn
+
+cancelSubscriptionQueueListener:
+  handler: src/modules/subscriptions/functions/cancel-subscription-sqs.handler
+  description: Listener CancelSubscriptionsQueue and send to VINDI
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - CancelSubscriptionsQueue
+            - Arn

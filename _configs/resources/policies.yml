@@ -1,0 +1,26 @@
+Resources:
+  GeneralRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+                - dynamodb.amazonaws.com
+                - sqs.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: policyMpn
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow # note that these rights are given in the default policy and are required if you want logs out of your lambda(s)
+                Action:
+                  - lambda:*
+                  - dynamodb:*
+                  - sqs:*
+                  - ses:*
+                Resource: arn:aws:logs:${self:provider.region}:${self:custom.accountId}:*

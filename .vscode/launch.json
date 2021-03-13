@@ -1,0 +1,18 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug",
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceRoot}",
+			"runtimeExecutable": "npm",
+			"runtimeArgs": [
+				"run",
+				"debug"
+			],
+			"port": 9229,
+			"smartclientBin": "C:\\Users\\jamaira.dias\\OneDrive - META SERVIÇOS EM INFORMÁTICA LTDA\\Área de Trabalho\\SIGAATF\\Scripts Web\\Cases\\ATFA005TESTCASE.py"
+		}
+	]
+}

@@ -1,0 +1,127 @@
+empoderaQueueListener:
+  handler: src/modules/events/functions/empodera-sqs.handler
+  description: Listener EventsEmpoderaQueue send message to EMPODERA
+  maximumRetryAttempts: 1
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - EventsEmpoderaQueue
+            - Arn
+
+licenciadorQueueListener:
+  handler: src/modules/events/functions/licenciador-sqs.handler
+  description: Listener EventsLicenciadorQueue send message to LICENCIADOR
+  maximumRetryAttempts: 1
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - EventsLicenciadorQueue
+            - Arn
+
+protheusQueueListener:
+  handler: src/modules/events/functions/protheus-sqs.handler
+  description: Listener EventsProtheusQueue send message to PROTHEUS
+  maximumRetryAttempts: 1
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - EventsProtheusQueue
+            - Arn
+
+protheusCorpQueueListener:
+  handler: src/modules/events/functions/protheus-corp-sqs.handler
+  description: Listener EventsProtheusCorpQueue send message to PROTHEUSCORP
+  maximumRetryAttempts: 1
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - EventsProtheusCorpQueue
+            - Arn
+
+errorHandlingLicenciador:
+  handler: src/modules/events/functions/error-handling-licenciador.handler
+  description: Error Handling Process
+  events:
+    - schedule: 
+        rate: cron(15,45 * * * ? *)
+        enabled: true
+
+errorHandlingVindi:
+  handler: src/modules/events/functions/error-handling-vindi.handler
+  description: Error Handling Process
+  events:
+    - schedule: 
+        rate: cron(25,55 * * * ? *)
+        enabled: true
+
+errorHandlingStore:
+  handler: src/modules/events/functions/error-handling-store.handler
+  description: Error Handling Process
+  events:
+    - schedule: 
+        rate: cron(5,35 * * * ? *)
+        enabled: true
+
+errorHandlingProtheus:
+  handler: src/modules/events/functions/error-handling-protheus.handler
+  description: Error Handling Process
+  events:
+    - schedule: 
+        rate: cron(5,35 * * * ? *)
+        enabled: true
+
+errorHandlingEmpodera:
+  handler: src/modules/events/functions/error-handling-empodera.handler
+  description: Error Handling Process
+  events:
+    - schedule: 
+        rate: cron(5,35 * * * ? *)
+        enabled: true
+
+storeQueueListener:
+  handler: src/modules/events/functions/store-sqs.handler
+  description: Listener EventsStoreQueue send message to Store
+  maximumRetryAttempts: 1
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - EventsStoreQueue
+            - Arn
+
+vindiQueueListener:
+  handler: src/modules/events/functions/vindi-sqs.handler
+  description: Listener EventsVindiQueue send message to Vindi
+  maximumRetryAttempts: 1
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - EventsVindiQueue
+            - Arn
+
+messagesQueueListener:
+  handler: src/modules/events/functions/messages-sqs.handler
+  description: Listener EventsMessageQueue send any message to Customer
+  maximumRetryAttempts: 1
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - EventsMessageQueue
+            - Arn
+
+# verifyEventsQueueListener:
+#   handler: src/modules/events/functions/verify-events-sqs.handler
+#   description: Listener VerifyEventsQueue
+#   maximumRetryAttempts: 1
+#   events:
+#     - sqs:
+#         arn:
+#           Fn::GetAtt:
+#             - VerifyEventsQueue
+#             - Arn

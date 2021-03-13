@@ -1,0 +1,16 @@
+# Discounts API Endpoints
+discountCreate:
+  handler: src/modules/discounts/endpoints/create.handler
+  description: Create Discounts in Serverless Platform
+  events:
+    - http:
+        method: post
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+          scopes:
+            - ${self:custom.prefix}-servicos/read
+            - ${self:custom.prefix}-servicos/write        
+        path: discounts
+        cors: true
