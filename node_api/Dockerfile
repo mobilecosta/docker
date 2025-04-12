@@ -2,9 +2,11 @@ FROM node:current-alpine3.21
 
 WORKDIR /api_node
 
-COPY . .
+COPY package.json .
 
 RUN npm install
+
+COPY . .
 
 RUN rm package-lock.json
 
