@@ -4,13 +4,19 @@ services:
     container_name: contador_1
     ports:
       - "3000:3000"
+    environment:
+      - nome=Wagner Mobile Costa Yaml
   c2:
     image: node-api
     container_name: contador_2
     ports:
       - "3001:3000"      
+    environment:
+      - nome=${nome} Env
   c3:
     image: node-api
     container_name: contador_3
     ports:
       - "3002:3000"            
+    env_file:
+      - ./.env
