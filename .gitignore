@@ -1,2 +1,4 @@
-node\node_modules;
-node_api\node_modules;
+node/node_modules;
+node/package-lock.json;
+node_api/node_modules;
+node_api/package-lock.json

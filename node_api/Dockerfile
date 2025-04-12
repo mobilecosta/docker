@@ -2,10 +2,11 @@ FROM node:current-alpine3.21
 
 WORKDIR /api_node
 
-COPY package.json .
-COPY main.js .
+COPY . .
 
 RUN npm install
+
+RUN rm package-lock.json
 
 EXPOSE 3000
 
