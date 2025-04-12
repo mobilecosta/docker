@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Contador</title>
+		<style>
+			body {
+				background-color: #cdcdcd;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				font-family: Arial, sans-serif;
+			}
+			#counter {
+				font-size: 5em;
+				margin-bottom: 20px;
+			}
+			.button {
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				border: none;
+				font-size: 1.5em;
+				margin: 10px;
+				cursor: pointer;
+			}
+			.button-list {
+				display: flex;
+			}
+			#increment {
+				background-color: #4caf50;
+				color: white;
+			}
+			#reset {
+				background-color: #f44336;
+				color: white;
+			}
+			#decrement {
+				background-color: #2196f3;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="counter">0</div>
+		<div class="button-list">
+			<button id="increment" class="button">+</button>
+			<button id="reset" class="button">0</button>
+			<button id="decrement" class="button">-</button>
+		</div>
+
+		<script>
+			let counter = 0;
+			const counterElement = document.getElementById("counter");
+			const incrementButton = document.getElementById("increment");
+			const resetButton = document.getElementById("reset");
+			const decrementButton = document.getElementById("decrement");
+
+			incrementButton.addEventListener("click", () => {
+				counter++;
+				counterElement.textContent = counter;
+			});
+
+			resetButton.addEventListener("click", () => {
+				counter = 0;
+				counterElement.textContent = counter;
+			});
+
+			decrementButton.addEventListener("click", () => {
+				counter--;
+				counterElement.textContent = counter;
+			});
+		</script>
+	</body>
+</html>
