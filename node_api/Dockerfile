@@ -1,4 +1,8 @@
+ARG nome=Wagner Mobile Costa
+
 FROM node:current-alpine3.21
+
+ENV nome=$nome
 
 WORKDIR /api_node
 
