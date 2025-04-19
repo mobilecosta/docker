@@ -1,0 +1,64 @@
+version: "3.9"
+services:
+    db:
+        image: protheus-postgresql-15
+        container_name: postgresql
+        user: root
+        ports:
+            - "5432:5432"
+        env_file:
+          - .env
+        volumes:
+            - ./volume/data/psql:/var/lib/postgresql/data
+        networks:
+            - protheus
+        restart: always
+    dbaccess:
+        image: protheus-dbaccess
+        container_name: dbaccess
+        ports:
+          - "7890:7890"
+        env_file:
+          - .env
+        ulimits:
+            # ulimits definido de acordo com documentação da TOTVS
+            # https://tdn.totvs.com/display/tec/DBAccess+-+ulimit+settings
+            core:
+                soft: -1
+                hard: -1
+            nofile:
+                soft: 65535
+                hard: 65535
+            stack:
+                soft: 1048576
+                hard: 1048576
+        networks:
+            - protheus
+        restart: always
+        depends_on:
+            - db
+            - license
+    license:
+        image: protheus-license
+        container_name: license-server
+        ports:
+            - "8081:80"
+        devices:
+            - "/dev/mem:/dev/mem"
+        cap_add:
+            - sys_rawio
+        ulimits:
+            core:
+                soft: 65536
+                hard: 65536
+            nofile:
+                soft: 65536
+                hard: 65536
+            stack:
+                soft: 1048576
+                hard: 1048576
+        networks:
+            - protheus
+        restart: always
+networks:
+    protheus:

@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+    db:
+        image: protheus-postgresql-15
+        container_name: postgresql
+        user: root
+        ports:
+            - "5432:5432"
+        env_file:
+          - .env
+        volumes:
+            - ./volume/data/psql:/var/lib/postgresql/data
+        networks:
+            - protheus
+        restart: always
+networks:
+    protheus:
