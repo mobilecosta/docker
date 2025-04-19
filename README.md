@@ -25,3 +25,5 @@ https://muhammadtriwibowo.medium.com/set-permanently-ulimit-n-open-files-in-ubun
 
 ## Referencia
 https://bitbucket.org/felipe_raposo/docker-protheus-postgresql-microsoft-sql-server
+
+https://github.com/lucasrodrigues85/protheus-docker
