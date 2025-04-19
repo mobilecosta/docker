@@ -15,3 +15,13 @@ Execução main.js
 
 # 4. Compose pasta compose
 docker compose up
+
+# 5. Protheus
+## Configurações Protheus
+
+https://tdn.totvs.com/display/tec/Application+Server+-+ulimit+settings
+
+https://muhammadtriwibowo.medium.com/set-permanently-ulimit-n-open-files-in-ubuntu-4d61064429a
+
+## Referencia
+https://bitbucket.org/felipe_raposo/docker-protheus-postgresql-microsoft-sql-server
