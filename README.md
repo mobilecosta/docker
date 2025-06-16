@@ -32,5 +32,9 @@ https://bitbucket.org/felipe_raposo/docker-protheus-postgresql-microsoft-sql-ser
 
 https://github.com/lucasrodrigues85/protheus-docker
 
+https://github.com/rodrigomicrosiga/docker-protheus-sqlite
+
+https://github.com/rodrigomicrosiga/docker-protheus-postgres
+
 ## Passos AWS
 ## 1. Inicialização da maquina - https://github.com/henrylle/bia/blob/main/scripts/user_data_ec2_zona_a.sh
