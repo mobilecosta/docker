@@ -38,3 +38,6 @@ https://github.com/rodrigomicrosiga/docker-protheus-postgres
 
 ## Passos AWS
 ## 1. Inicialização da maquina - https://github.com/henrylle/bia/blob/main/scripts/user_data_ec2_zona_a.sh
+
+## Estudo 
+https://www.youtube.com/watch?v=DFngq_O78Fc
