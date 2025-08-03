@@ -1,3 +1,6 @@
+# Obter informações de uma imagem
+https://github.com/wagoodman/dive
+
 # docker
 Repositorio com informações sobre criação de docker
 
