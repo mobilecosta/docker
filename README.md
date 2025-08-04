@@ -1,4 +1,6 @@
 # Obter informações de uma imagem
+docker -H tcp://52.55.243.101:2375 ps
+
 https://github.com/wagoodman/dive
 
 https://www.warp.dev/terminus/ssh-docker-container?gad_source=1&gad_campaignid=21610894043&gbraid=0AAAAAoTBvvq0IWCuGEG3rZ95fIJ_3hl5B&gclid=CjwKCAjwkbzEBhAVEiwA4V-yqnrpUKvmIYJicQM6XUmAe02Z1ddFwZrD4MPMpNJd-02mcbe6Udxd-xoC0AoQAvD_BwE
