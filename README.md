@@ -7,6 +7,11 @@ https://www.warp.dev/terminus/ssh-docker-container?gad_source=1&gad_campaignid=2
 
 https://hub.docker.com/mcp
 
+## Container
+
+https://www.youtube.com/watch?v=PQQXd_S2M3c
+https://github.com/runfinch/finch
+
 # docker
 Repositorio com informações sobre criação de docker
 
