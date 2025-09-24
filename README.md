@@ -1,3 +1,7 @@
+## Ferramentas
+1) Docker Desktop
+2) https://podman.io/
+
 # Obter informações de uma imagem
 docker -H tcp://52.55.243.101:2375 ps
 
