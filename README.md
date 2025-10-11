@@ -57,6 +57,8 @@ https://github.com/rodrigomicrosiga/docker-protheus-postgres
 
 https://github.com/rodrigomicrosiga/docker-protheus-tss-postgres
 
+https://github.com/mobilecosta/docker-protheus-postgres
+
 https://hub.docker.com/r/emebatista/postgres-2510
 
 ## Passos AWS
